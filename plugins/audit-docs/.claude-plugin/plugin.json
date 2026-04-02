@@ -1,0 +1,9 @@
+{
+  "name": "audit-docs",
+  "version": "1.0.0",
+  "description": "Documentation audit — checks for staleness, redundancy, broken references, and bloat across all markdown files.",
+  "author": { "name": "jmlero" },
+  "repository": "https://github.com/jmlero/claude-toolkit",
+  "license": "MIT",
+  "keywords": ["audit", "docs", "documentation", "markdown"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "slim-cli",
+  "version": "1.0.0",
+  "description": "Puts CLI output on a diet — rewrites verbose commands to compact versions to save tokens. Covers git, Docker, npm/yarn/pnpm, pip, curl/wget, and Go.",
+  "author": { "name": "jmlero" },
+  "repository": "https://github.com/jmlero/claude-toolkit",
+  "license": "MIT",
+  "keywords": ["cli", "tokens", "hooks", "optimization"]
+}

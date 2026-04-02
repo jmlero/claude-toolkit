@@ -1,0 +1,9 @@
+{
+  "name": "audit-code",
+  "version": "1.0.0",
+  "description": "Production readiness audit — security, error handling, auth, input validation, Docker, code quality, and dependencies.",
+  "author": { "name": "jmlero" },
+  "repository": "https://github.com/jmlero/claude-toolkit",
+  "license": "MIT",
+  "keywords": ["audit", "security", "production", "deployment"]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "jmlero",
+  "owner": { "name": "jmlero" },
+  "metadata": {
+    "description": "Personal Claude Code toolkit — skills, hooks, and agents for full-stack development",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "audit-code",
+      "source": "./plugins/audit-code",
+      "description": "Production readiness audit — security, error handling, auth, Docker, code quality",
+      "version": "1.0.0",
+      "keywords": ["audit", "security", "production", "deployment"]
+    },
+    {
+      "name": "audit-docs",
+      "source": "./plugins/audit-docs",
+      "description": "Documentation audit — staleness, redundancy, broken references, bloat",
+      "version": "1.0.0",
+      "keywords": ["audit", "docs", "documentation", "markdown"]
+    },
+    {
+      "name": "slim-cli",
+      "source": "./plugins/slim-cli",
+      "description": "Puts CLI output on a diet — rewrites verbose commands to compact versions to save tokens",
+      "version": "1.0.0",
+      "keywords": ["cli", "tokens", "hooks", "optimization"]
+    },
+{
+      "name": "review-pr",
+      "source": "./plugins/review-pr",
+      "description": "PR review against project standards — code quality, security, tests, patterns",
+      "version": "1.0.0",
+      "keywords": ["review", "pr", "github", "code-quality"]
+    }
+  ]
+}

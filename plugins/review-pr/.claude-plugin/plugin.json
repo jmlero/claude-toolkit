@@ -1,0 +1,9 @@
+{
+  "name": "review-pr",
+  "version": "1.0.0",
+  "description": "PR review against project standards — code quality, security, testing, framework-specific checks, and git conventions.",
+  "author": { "name": "jmlero" },
+  "repository": "https://github.com/jmlero/claude-toolkit",
+  "license": "MIT",
+  "keywords": ["review", "pr", "github", "code-quality"]
+}
