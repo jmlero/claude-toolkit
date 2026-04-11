@@ -65,6 +65,14 @@ Plugins I use or recommend from other sources.
 | **superpowers** | 14 skills: TDD (strict "Iron Law"), systematic debugging, verification before completion, brainstorming, planning, code review. The most comprehensive methodology framework. | [obra/superpowers](https://github.com/obra/superpowers) |
 | **codex** | OpenAI Codex integration — use Codex CLI as a tool from Claude Code. | [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc) |
 
+### MCP Servers
+
+| Tool | What it does | Install | Source |
+|------|-------------|---------|--------|
+| **codegraph** | Pre-indexed semantic code knowledge graph — instant symbol search, call graph tracing, impact analysis. Cuts exploration tool calls by ~92%. 19+ languages. Fully local (SQLite). | `npx @colbymchenry/codegraph` | [colbymchenry/codegraph](https://github.com/colbymchenry/codegraph) |
+
+> **Note:** MCP servers are not plugins. They register in `~/.claude.json` and expose tools directly to Claude Code. CodeGraph's interactive installer handles setup automatically.
+
 ### Directories
 
 Useful sources for discovering more plugins:
@@ -162,6 +170,20 @@ plugin-name/
 /plugin install terraform-code-generation@hashicorp
 /plugin install terraform-module-generation@hashicorp
 /plugin install terraform-provider-development@hashicorp
+```
+
+### MCP servers (e.g. CodeGraph)
+
+MCP servers aren't plugins — they register directly in `~/.claude.json`.
+
+```bash
+# CodeGraph — interactive installer configures everything
+npx @colbymchenry/codegraph
+
+# Initialize in a project (creates .codegraph/ directory)
+codegraph init --index
+
+# The MCP server starts automatically via npx when Claude Code runs
 ```
 
 ### Skills that aren't plugins
