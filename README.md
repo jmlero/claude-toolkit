@@ -70,6 +70,7 @@ Plugins I use or recommend from other sources.
 | Tool | What it does | Install | Source |
 |------|-------------|---------|--------|
 | **codegraph** | Pre-indexed semantic code knowledge graph — instant symbol search, call graph tracing, impact analysis. Cuts exploration tool calls by ~92%. 19+ languages. Fully local (SQLite). | `npx @colbymchenry/codegraph` | [colbymchenry/codegraph](https://github.com/colbymchenry/codegraph) |
+| **backlog** | Markdown-native task manager & Kanban visualizer for any Git repo. Spec-driven AI development with CLI, web UI, and MCP integration. | `npm i -g backlog.md` | [MrLesk/Backlog.md](https://github.com/MrLesk/Backlog.md) |
 
 > **Note:** MCP servers are not plugins. They register in `~/.claude.json` and expose tools directly to Claude Code. CodeGraph's interactive installer handles setup automatically.
 
