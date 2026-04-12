@@ -71,6 +71,7 @@ Plugins I use or recommend from other sources.
 |------|-------------|---------|--------|
 | **codegraph** | Pre-indexed semantic code knowledge graph — instant symbol search, call graph tracing, impact analysis. Cuts exploration tool calls by ~92%. 19+ languages. Fully local (SQLite). | `npx @colbymchenry/codegraph` | [colbymchenry/codegraph](https://github.com/colbymchenry/codegraph) |
 | **backlog** | Markdown-native task manager & Kanban visualizer for any Git repo. Spec-driven AI development with CLI, web UI, and MCP integration. | `npm i -g backlog.md` | [MrLesk/Backlog.md](https://github.com/MrLesk/Backlog.md) |
+| **context7** | Pulls up-to-date, version-specific library docs and code examples straight from the source into your prompt. No more outdated training data. | `npx ctx7 setup` | [upstash/context7](https://github.com/upstash/context7) |
 
 > **Note:** MCP servers are not plugins. They register in `~/.claude.json` and expose tools directly to Claude Code. CodeGraph's interactive installer handles setup automatically.
 
@@ -173,7 +174,7 @@ plugin-name/
 /plugin install terraform-provider-development@hashicorp
 ```
 
-### MCP servers (e.g. CodeGraph)
+### MCP servers (e.g. CodeGraph, Context7)
 
 MCP servers aren't plugins — they register directly in `~/.claude.json`.
 
@@ -185,6 +186,13 @@ npx @colbymchenry/codegraph
 codegraph init --index
 
 # The MCP server starts automatically via npx when Claude Code runs
+```
+
+```bash
+# Context7 — interactive setup (OAuth + API key + skill install)
+npx ctx7 setup
+
+# The setup command handles authentication and configures Claude Code automatically
 ```
 
 ### Skills that aren't plugins
