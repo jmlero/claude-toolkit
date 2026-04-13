@@ -5,6 +5,7 @@
 //   marketplace-plugin  — installed via Claude Code's plugin marketplace system
 //   mcp                 — MCP server; printed as instructions (most need interactive auth)
 //   manual-skill        — SKILL.md file downloaded from a URL into .claude/skills/
+//   context-fragment    — Markdown practice file copied into context/base/ and @-referenced in CLAUDE.md
 
 export const MARKETPLACES = {
   jmlero: { name: "jmlero", repo: "jmlero/claude-toolkit" },
@@ -163,6 +164,18 @@ export const items = [
     installCommand: "npm i -g backlog.md",
     postInstall: "backlog init",
     suggest: () => ({ pick: false }),
+  },
+
+  // ─── Context fragments (always-active CLAUDE.md practices) ───────────
+  {
+    id: "tdd",
+    type: "context-fragment",
+    category: "Dev Methodology",
+    description: "TDD: Red-Green-Refactor cycle, always-active via CLAUDE.md",
+    sourceUrl: "https://raw.githubusercontent.com/jmlero/claude-toolkit/main/context/base/tdd.md",
+    installPath: "context/base/tdd.md",
+    claudeMdRef: "@./context/base/tdd.md",
+    suggest: () => ({ pick: true, reason: "universal best practice" }),
   },
 
   // ─── Manual skills (copied from URL) ──────────────────────────────────

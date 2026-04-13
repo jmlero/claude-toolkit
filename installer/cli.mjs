@@ -57,7 +57,9 @@ async function main() {
     ...item.suggest(ctx),
     existingScope: item.type === "marketplace-plugin"
       ? isPluginEnabled({ pluginId: item.id, marketplace: item.marketplace, cwd })
-      : null,
+      : item.type === "context-fragment"
+        ? (fs.existsSync(path.join(cwd, item.installPath)) ? "project" : null)
+        : null,
   }));
 
   const choices = suggestions.map(({ item, pick, reason, existingScope }) => {
@@ -123,6 +125,7 @@ async function main() {
   const selectedItems = items.filter((i) => selected.includes(i.id));
   const mcpInstructions = [];
   const manualSkills = [];
+  const contextFragments = [];
 
   const spinner = p.spinner();
   spinner.start(flags.dryRun ? "Planning installs (dry-run)" : "Installing");
@@ -150,6 +153,8 @@ async function main() {
       mcpInstructions.push(item);
     } else if (item.type === "manual-skill") {
       manualSkills.push(item);
+    } else if (item.type === "context-fragment") {
+      contextFragments.push(item);
     }
   }
 
@@ -169,6 +174,33 @@ async function main() {
       spinner.message(`downloaded ${item.id} → ${item.installPath}`);
     } catch (e) {
       spinner.message(pc.red(`failed to fetch ${item.id}: ${e.message}`));
+    }
+  }
+
+  // Context fragments: fetch + write + patch CLAUDE.md
+  for (const item of contextFragments) {
+    const dest = path.join(cwd, item.installPath);
+    const claudeMdPath = path.join(cwd, "CLAUDE.md");
+    if (flags.dryRun) {
+      spinner.message(`would install ${item.id} → ${item.installPath} + CLAUDE.md`);
+      continue;
+    }
+    try {
+      const res = await fetch(item.sourceUrl);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const body = await res.text();
+      fs.mkdirSync(path.dirname(dest), { recursive: true });
+      fs.writeFileSync(dest, body);
+      spinner.message(`downloaded ${item.id} → ${item.installPath}`);
+    } catch (e) {
+      spinner.message(pc.red(`failed to fetch ${item.id}: ${e.message}`));
+      continue;
+    }
+    // Add @ reference to CLAUDE.md
+    let claudeMd = fs.existsSync(claudeMdPath) ? fs.readFileSync(claudeMdPath, "utf8") : "";
+    if (!claudeMd.includes(item.claudeMdRef)) {
+      fs.writeFileSync(claudeMdPath, claudeMd + (claudeMd.endsWith("\n") ? "" : "\n") + item.claudeMdRef + "\n");
+      spinner.message(`added ${item.claudeMdRef} to CLAUDE.md`);
     }
   }
 
