@@ -1,0 +1,26 @@
+{
+  "name": "jmlero-toolkit",
+  "version": "1.0.0",
+  "description": "Interactive installer for the jmlero claude-toolkit — plugins, MCP servers, and skills.",
+  "bin": {
+    "jmlero-toolkit": "./installer/cli.mjs"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.8.2",
+    "picocolors": "^1.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmlero/claude-toolkit"
+  },
+  "license": "MIT",
+  "files": [
+    "installer/",
+    "README.md",
+    "LICENSE"
+  ]
+}

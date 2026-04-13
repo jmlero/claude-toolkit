@@ -4,6 +4,20 @@ Personal collection of Claude Code plugins for full-stack development. Public so
 
 ## Quick Start
 
+### One-liner installer (recommended)
+
+```bash
+# From the root of any project — interactive menu with suggestions based on your stack
+npx github:jmlero/claude-toolkit
+
+# Or non-interactive: install everything suggested for your stack
+npx github:jmlero/claude-toolkit --yes
+```
+
+The installer auto-detects your stack (React, Python, Terraform, FastAPI, etc.), pre-selects relevant plugins with a ★, and writes the settings for you. See [installer/README.md](./installer/README.md) for details.
+
+### Manual install (slash commands)
+
 ```bash
 # Add the marketplace (once per machine)
 /plugin marketplace add jmlero/claude-toolkit
