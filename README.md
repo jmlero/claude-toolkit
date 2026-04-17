@@ -83,11 +83,12 @@ Plugins I use or recommend from other sources.
 
 | Tool | What it does | Install | Source |
 |------|-------------|---------|--------|
-| **codegraph** | Pre-indexed semantic code knowledge graph — instant symbol search, call graph tracing, impact analysis. Cuts exploration tool calls by ~92%. 19+ languages. Fully local (SQLite). | `npx @colbymchenry/codegraph` | [colbymchenry/codegraph](https://github.com/colbymchenry/codegraph) |
+| **code-review-graph** ⭐ | Blast-radius code knowledge graph — 8.2x fewer tokens (benchmarked across 6 real repos), 49x on monorepos, incremental updates in <2s, 23 languages + Jupyter. Auto-configures Claude Code, Cursor, Windsurf, and more. Requires Python 3.10+. | `pipx install code-review-graph && code-review-graph install` then `code-review-graph build` | [tirth8205/code-review-graph](https://github.com/tirth8205/code-review-graph) |
+| **codegraph** | Code knowledge graph alternative — no Python needed (pure Node/npx). Simpler setup, fewer features. Use this if you can't install Python. | `npx @colbymchenry/codegraph` then `codegraph init --index` | [colbymchenry/codegraph](https://github.com/colbymchenry/codegraph) |
 | **backlog** | Markdown-native task manager & Kanban visualizer for any Git repo. Spec-driven AI development with CLI, web UI, and MCP integration. | `npm i -g backlog.md` | [MrLesk/Backlog.md](https://github.com/MrLesk/Backlog.md) |
 | **context7** | Pulls up-to-date, version-specific library docs and code examples straight from the source into your prompt. No more outdated training data. | `npx ctx7 setup` | [upstash/context7](https://github.com/upstash/context7) |
 
-> **Note:** MCP servers are not plugins. They register in `~/.claude.json` and expose tools directly to Claude Code. CodeGraph's interactive installer handles setup automatically.
+> **Note:** MCP servers are not plugins. They register in `~/.claude.json` and expose tools directly to Claude Code.
 
 ### Directories
 
@@ -188,18 +189,21 @@ plugin-name/
 /plugin install terraform-provider-development@hashicorp
 ```
 
-### MCP servers (e.g. CodeGraph, Context7)
+### MCP servers (e.g. code-review-graph, Context7)
 
 MCP servers aren't plugins — they register directly in `~/.claude.json`.
 
 ```bash
-# CodeGraph — interactive installer configures everything
+# code-review-graph (recommended) — 8.2x token reduction, auto-configures Claude Code
+pipx install code-review-graph
+code-review-graph install     # auto-detects Claude Code, writes MCP config
+code-review-graph build       # index your project (run once, updates incrementally)
+```
+
+```bash
+# CodeGraph — simpler alternative, no Python needed
 npx @colbymchenry/codegraph
-
-# Initialize in a project (creates .codegraph/ directory)
 codegraph init --index
-
-# The MCP server starts automatically via npx when Claude Code runs
 ```
 
 ```bash

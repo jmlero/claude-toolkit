@@ -140,13 +140,22 @@ export const items = [
 
   // ─── MCP Servers (printed as instructions) ────────────────────────────
   {
+    id: "code-review-graph",
+    type: "mcp",
+    category: "MCP Server",
+    description: "Blast-radius code graph — 8.2x fewer tokens (benchmarked), incremental updates, 23 languages",
+    installCommand: "pipx install code-review-graph && code-review-graph install",
+    postInstall: "code-review-graph build",
+    suggest: () => ({ pick: true, reason: "8.2x token reduction, 10k+ stars, better than codegraph" }),
+  },
+  {
     id: "codegraph",
     type: "mcp",
     category: "MCP Server",
-    description: "Semantic code knowledge graph — ~92% fewer exploration tool calls",
+    description: "Code knowledge graph — no Python needed (Node/npx only). Simpler alt to code-review-graph.",
     installCommand: "npx @colbymchenry/codegraph",
     postInstall: "codegraph init --index",
-    suggest: () => ({ pick: true, reason: "big tool-call savings" }),
+    suggest: () => ({ pick: false }),
   },
   {
     id: "context7",
